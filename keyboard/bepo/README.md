@@ -4,12 +4,12 @@ There are two main ways you could customize the ErgoDox EZ.
 
 ## The Easy Way: Use an existing firmware file and just flash it
 
-1. Download and install the [Teensy Loader](https://www.pjrc.com/teensy/loader.html)
-2. Find a firmware file you like. You can find a few if these in the keymaps subdirectory right here. The file you need ends with .hex, and you can look at its .c counterpart (or its PNG image) to see what you'll be getting. You can also use the [Massdrop configurator](https://keyboard-configurator.massdrop.com/ext/ergodox) to create a firmware Hex file you like.
-3. Download the firmware file
+1. Download dfu-programmer
+2. Download and install the [Teensy Loader](https://www.pjrc.com/teensy/loader.html)
+3. Download the firmware file (.hex)
 4. Connect the keyboard, press its Reset button (gently insert a paperclip into the hole in the top-right corner) and flash it using the Teensy loader you installed on step 1 and the firmware you downloaded.
 
-## More technical: create your own totally custom firmware by editing the source files. 
+## More technical: create your own totally custom firmware by editing the source files.
 
 This requires a little bit of familiarity with coding.
 
