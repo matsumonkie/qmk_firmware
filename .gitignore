@@ -13,3 +13,4 @@ tags
 build/
 *.bak
 .vagrant/
+keyboard/ergodox_ez/error
