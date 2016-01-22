@@ -32,8 +32,6 @@ void * matrix_init_kb(void) {
     PORTD |=  (1<<7 | 1<<5 | 1<<4);
     PORTE |=  (1<<6);
 
-    ergodox_blink_all_leds();
-
     if (matrix_init_user) {
         (*matrix_init_user)();
     }
@@ -105,5 +103,3 @@ out:
 
     return mcp23018_status;
 }
-
-
