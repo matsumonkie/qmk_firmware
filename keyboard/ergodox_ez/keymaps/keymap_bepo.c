@@ -203,6 +203,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
 // Runs just one time when the keyboard initializes.
 void * matrix_init_user(void) {
+
   for (int i = 0; i < 5; i++) {
     ergodox_blink_all_leds();
   }
@@ -217,8 +218,8 @@ void * matrix_scan_user(void) {
   ergodox_right_led_1_off();
   ergodox_right_led_2_off();
   ergodox_right_led_3_off();
+
   switch (layer) {
-    // TODO: Make this relevant to the ErgoDox EZ.
   case 1:
     ergodox_right_led_1_on();
     break;
@@ -226,7 +227,6 @@ void * matrix_scan_user(void) {
     ergodox_right_led_2_on();
     break;
   default:
-    // none
     break;
   }
 
