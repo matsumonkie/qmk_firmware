@@ -83,20 +83,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [EDIT] = KEYMAP(
                   // left hand
-                  KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
+                  KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_TRNS,
                   KC_TRNS, KC_EXLM, LCTL(KC_DEL), LCTL(KC_BSPC), M(SWITCH_TAB), KC_PIPE, KC_TRNS,
-                  KC_TRNS,KC_HASH, KC_DEL, KC_BSPC, M(SWITCH_APP), KC_BSPC,
-                  KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
-                  KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                  KC_TRNS,KC_TRNS,
+                  KC_TRNS, KC_HASH, KC_DEL, KC_BSPC, M(SWITCH_APP), KC_BSPC,
+                  KC_TRNS, KC_PERC, M(DELETE_END_LINE), M(DELETE_BEG_LINE), KC_RBRC,KC_TILD,KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS,
                   KC_TRNS,
-                  KC_TRNS,KC_TRNS,KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS,
                   // right hand
-                  KC_TRNS, KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
-                  KC_TRNS, KC_UP,   KC_7,   KC_8,    KC_9,    KC_ASTR, KC_F12,
-                  KC_DOWN, KC_LEFT, KC_UP,    KC_DOWN,    KC_RGHT, KC_TRNS,
-                  KC_TRNS, KC_AMPR, KC_1, KC_2,KC_3, KC_TRNS, KC_TRNS,
-                  KC_TRNS,KC_DOT,  KC_0,    KC_EQL,  KC_TRNS,
+                  KC_TRNS, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_END, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_LEFT, KC_UP, KC_DOWN, KC_RGHT, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                   KC_TRNS, KC_TRNS,
                   KC_TRNS,
                   KC_TRNS, KC_TRNS, KC_TRNS
@@ -196,25 +196,25 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
   case SWITCH_APP:
     if (record->event.pressed) {
-      return MACRO( D(LALT), T(TAB), END);
+      return MACRO(D(LALT), T(TAB), END);
     }
     break;
 
   case SWITCH_TAB:
     if (record->event.pressed) {
-      return MACRO( D(LCTL), T(TAB), END);
+      return MACRO(D(LCTL), T(TAB), END);
     }
     break;
 
   case DELETE_END_LINE:
     if (record->event.pressed) {
-      return MACRO( D(LCTL), T(BSPC), END);
+      return MACRO(D(LSFT), T(END), U(LSFT), T(BSPC), END);
     }
     break;
 
   case DELETE_BEG_LINE:
     if (record->event.pressed) {
-      return MACRO( D(LCTL), T(DEL), END);
+      return MACRO(D(LSFT), T(HOME), U(LSFT), T(BSPC), END);
     }
     break;
 
