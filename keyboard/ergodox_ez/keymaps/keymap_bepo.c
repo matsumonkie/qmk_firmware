@@ -11,6 +11,8 @@ enum {
 
 enum {
   SWITCH_APP
+  , SWITCH_TAB
+  , SWITCH_BUFFER
   , TOGGLE_SYMB_LAYER
 };
 
@@ -162,8 +164,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [EDIT] = KEYMAP(
                   // left hand
                   KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
-                  KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR,KC_RCBR,KC_PIPE,KC_TRNS,
-                  KC_TRNS,KC_HASH,KC_DLR, KC_LPRN,M(SWITCH_APP),KC_GRV,
+                  KC_TRNS,KC_EXLM,KC_AT,  KC_LCBR, M(SWITCH_TAB), KC_PIPE,KC_TRNS,
+                  KC_TRNS,KC_HASH,KC_DLR, KC_LPRN, M(SWITCH_APP), KC_GRV,
                   KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
                   KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
                   KC_TRNS,KC_TRNS,
@@ -196,6 +198,15 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
       return MACRO( D(LALT), T(TAB), END);
     }
     break;
+
+
+  case SWITCH_TAB:
+    if (record->event.pressed) {
+      return MACRO( D(LCTL), T(TAB), END);
+    }
+    break;
+
+
   }
 
   return MACRO_NONE;
