@@ -14,8 +14,6 @@ enum {
   , SWITCH_TAB
   , SWITCH_BUFFER
   , TOGGLE_SYMB_LAYER
-  , DELETE_PREV_WORD
-  , DELETE_NEXT_WORD
   , DELETE_BEG_LINE
   , DELETE_END_LINE
 };
@@ -42,7 +40,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                 |      |ace   | End  |       | PgDn |        |      |
    *                                 `--------------------'       `----------------------'
    */
-
   [BASE] = KEYMAP(
                   // left hand
                   KC_EQL,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_LEFT,
@@ -62,6 +59,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_LALT,        CTL_T(KC_ESC),
                   KC_PGUP,
                   KC_PGDN,KC_TAB, KC_ENT
+                  ),
+
+  /*
+   * ,--------------------------------------------------.           ,--------------------------------------------------.
+   * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
+   * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+   * |        |   !  |   @  |   {  |   }  |   |  |      |           |      |   Up |   7  |   8  |   9  |   *  |   F12  |
+   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+   * |        |   #  |   $  |   (  |   )  |   `  |------|           |------| Down |   4  |   5  |   6  |   +  |        |
+   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+   * |        |   %  |   ^  |   [  |   ]  |   ~  |      |           |      |   &  |   1  |   2  |   3  |   \  |        |
+   * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+   *   |      |      |      |      |      |                                       |      |    . |   0  |   =  |      |
+   *   `----------------------------------'                                       `----------------------------------'
+   *                                        ,-------------.       ,-------------.
+   *                                        |      |      |       |      |      |
+   *                                 ,------|------|------|       |------+------+------.
+   *                                 |      |      |      |       |      |      |      |
+   *                                 |      |      |------|       |------|      |      |
+   *                                 |      |      |      |       |      |      |      |
+   *                                 `--------------------'       `--------------------'
+   */
+  [EDIT] = KEYMAP(
+                  // left hand
+                  KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
+                  KC_TRNS, KC_EXLM, LCTL(KC_DEL), LCTL(KC_BSPC), M(SWITCH_TAB), KC_PIPE, KC_TRNS,
+                  KC_TRNS,KC_HASH, KC_DEL, KC_BSPC, M(SWITCH_APP), KC_BSPC,
+                  KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
+                  KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
+                  KC_TRNS,KC_TRNS,
+                  KC_TRNS,
+                  KC_TRNS,KC_TRNS,KC_TRNS,
+                  // right hand
+                  KC_TRNS, KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
+                  KC_TRNS, KC_UP,   KC_7,   KC_8,    KC_9,    KC_ASTR, KC_F12,
+                  KC_DOWN, KC_LEFT, KC_UP,    KC_DOWN,    KC_RGHT, KC_TRNS,
+                  KC_TRNS, KC_AMPR, KC_1, KC_2,KC_3, KC_TRNS, KC_TRNS,
+                  KC_TRNS,KC_DOT,  KC_0,    KC_EQL,  KC_TRNS,
+                  KC_TRNS, KC_TRNS,
+                  KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS
                   ),
 
   /*
@@ -145,47 +183,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_TRNS, KC_TRNS, KC_WBAK
                   ),
 
-  /*
-   * ,--------------------------------------------------.           ,--------------------------------------------------.
-   * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
-   * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-   * |        |   !  |   @  |   {  |   }  |   |  |      |           |      |   Up |   7  |   8  |   9  |   *  |   F12  |
-   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * |        |   #  |   $  |   (  |   )  |   `  |------|           |------| Down |   4  |   5  |   6  |   +  |        |
-   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * |        |   %  |   ^  |   [  |   ]  |   ~  |      |           |      |   &  |   1  |   2  |   3  |   \  |        |
-   * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-   *   |      |      |      |      |      |                                       |      |    . |   0  |   =  |      |
-   *   `----------------------------------'                                       `----------------------------------'
-   *                                        ,-------------.       ,-------------.
-   *                                        |      |      |       |      |      |
-   *                                 ,------|------|------|       |------+------+------.
-   *                                 |      |      |      |       |      |      |      |
-   *                                 |      |      |------|       |------|      |      |
-   *                                 |      |      |      |       |      |      |      |
-   *                                 `--------------------'       `--------------------'
-   */
-  [EDIT] = KEYMAP(
-                  // left hand
-                  KC_TRNS,KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_TRNS,
-                  KC_TRNS, KC_EXLM, M(DELETE_NEXT_WORD), M(DELETE_PREV_WORD), M(SWITCH_TAB), KC_PIPE, KC_TRNS,
-                  KC_TRNS,KC_HASH, KC_DEL, KC_BSPC, M(SWITCH_APP), KC_BSPC,
-                  KC_TRNS,KC_PERC,KC_CIRC,KC_LBRC,KC_RBRC,KC_TILD,KC_TRNS,
-                  KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,
-                  KC_TRNS,KC_TRNS,
-                  KC_TRNS,
-                  KC_TRNS,KC_TRNS,KC_TRNS,
-                  // right hand
-                  KC_TRNS, KC_F6,   KC_F7,  KC_F8,   KC_F9,   KC_F10,  KC_F11,
-                  KC_TRNS, KC_UP,   KC_7,   KC_8,    KC_9,    KC_ASTR, KC_F12,
-                  KC_DOWN, KC_LEFT, KC_UP,    KC_DOWN,    KC_RGHT, KC_TRNS,
-                  KC_TRNS, KC_AMPR, KC_1, KC_2,KC_3, KC_TRNS, KC_TRNS,
-                  KC_TRNS,KC_DOT,  KC_0,    KC_EQL,  KC_TRNS,
-                  KC_TRNS, KC_TRNS,
-                  KC_TRNS,
-                  KC_TRNS, KC_TRNS, KC_TRNS
-                  ),
-
 
 };
 
@@ -209,17 +206,19 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
     }
     break;
 
-  case DELETE_PREV_WORD:
+  case DELETE_END_LINE:
     if (record->event.pressed) {
       return MACRO( D(LCTL), T(BSPC), END);
     }
     break;
 
-  case DELETE_NEXT_WORD:
+  case DELETE_BEG_LINE:
     if (record->event.pressed) {
       return MACRO( D(LCTL), T(DEL), END);
     }
     break;
+
+
   }
 
   return MACRO_NONE;
