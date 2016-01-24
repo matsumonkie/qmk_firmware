@@ -5,7 +5,7 @@
 #
 # make clean = Clean out built project files.
 #
-# That's pretty much all you need. To compile, always go make clean, 
+# That's pretty much all you need. To compile, always go make clean,
 # followed by make.
 #
 # For advanced users only:
@@ -28,7 +28,10 @@ TARGET_DIR = .
 # # project specific files
 SRC = ergodox_ez.c \
 	  twimaster.c \
-	  matrix.c
+	  matrix.c \
+          init.c \
+          runtime.c \
+          macro.c
 
 ifdef KEYMAP
     SRC := keymaps/keymap_$(KEYMAP).c $(SRC)
@@ -112,4 +115,3 @@ VPATH += $(TOP_DIR)
 VPATH += $(TMK_DIR)
 
 include $(TOP_DIR)/quantum/quantum.mk
-
