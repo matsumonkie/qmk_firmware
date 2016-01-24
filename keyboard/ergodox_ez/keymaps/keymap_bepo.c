@@ -110,8 +110,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYMB] = KEYMAP(
                   // left hand
                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                  KC_TRNS, KC_TRNS, KC_TILD, KC_SCOLON, KC_HASH, KC_PERC, KC_TRNS,
-                  KC_TRNS, KC_AMPR, KC_BSLASH, KC_QUOTE, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_AT, KC_TILD, KC_SCOLON, KC_HASH, KC_PERC, KC_TRNS,
+                  KC_NO, KC_AMPR, KC_BSLASH, KC_QUOTE, KC_QUOTE, KC_TRNS,
                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                   KC_TRNS, KC_TRNS,
@@ -119,9 +119,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_TRNS, KC_TRNS, KC_TRNS,
                   // right hand
                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_GRAVE, KC_EQL, KC_LBRC, KC_RBRC, KC_NO, KC_TRNS,
+                  KC_COLN, KC_MINS, KC_LPRN, KC_RPRN, KC_EXLM, KC_NO,
+                  KC_TRNS, KC_TRNS, KC_CIRC, KC_COMMA, KC_DOT, KC_TRNS, KC_TRNS,
                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                   KC_TRNS, KC_TRNS,
                   KC_TRNS,
