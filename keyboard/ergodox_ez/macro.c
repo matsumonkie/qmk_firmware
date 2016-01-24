@@ -35,7 +35,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
     }
     break;
 
-
   }
 
   return MACRO_NONE;
