@@ -7,15 +7,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /*
    * ,--------------------------------------------------.           ,--------------------------------------------------.
-   * |  Esc   |   1  |   2  |   3  |   4  |   5  |   .  |           |   .  |   6  |   7  |   8  |   9  |   0  |  Mdia  |
+   * |  Esc   |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |  Lock  |
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-   * |  Tab   |Symb/B|   Z  |   P  |   O  |   ,  |  .   |           |  .   |   Y  |   V  |   D  |   L  |Symb/J|   .    |
+   * |  Tab   |SYMB/B|   K  |   P  |   O  |   ,  | EDIT |           | SYMB |   Y  |   V  |   D  |   L  |SYMB/J|        |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * |  Edit  |   A  |   U  |   I  |   E  |   .  |------|           |------|   C  |   T  |   S  |   R  |   N  |  Edit  |
-   * |--------+------+------+------+------+------| Hyper|           | Meh  |------+------+------+------+------+--------|
-   * |  Caps  |Shift |   X  |   K  |   W  |   F  |      |           |      |   M  |   Q  |   G  |   H  |RShift|   .    |
+   * |  EDIT  |   A  |   U  |   I  |   E  |   .  |------|           |------|   C  |   T  |   S  |   R  |   N  |  Edit  |
+   * |--------+------+------+------+------+------| MDIA |           | MDIA |------+------+------+------+------+--------|
+   * |  Caps  |Shift |   X  |   Z  |   W  |   F  |      |           |      |   M  |   Q  |   G  |   H  |RShift|NumLock |
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-   *   |  .   |  .   |AltShf| LAlt | LCtl |                                       | RCtl | LAlt |   .  |   .  |  .   |
+   *   |      |      |AltShf| LAlt | LCtl |                                       | RCtl | LAlt |      |      |      |
    *   `----------------------------------'                                       `----------------------------------'
    *                                        ,-------------.       ,-------------.
    *                                        | App  | LGui |       | Alt  |C-Esc |
@@ -28,18 +28,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = KEYMAP(
                   // left hand
                   KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_DOT,
-                  KC_TAB, LT(SYMB, KC_B), KC_Z, KC_P, KC_O, KC_COMM, TG(EDIT),
+                  KC_TAB, LT(SYMB, KC_B), KC_K, KC_P, KC_O, KC_COMM, TG(EDIT),
                   MO(EDIT), KC_A, KC_U, KC_I, KC_E, KC_DOT,
-                  KC_CAPS, KC_LSFT, KC_X, KC_K, KC_W, KC_F, TG(SYMB),
+                  KC_CAPS, KC_LSFT, KC_X, KC_Z, KC_W, KC_F, MO(MDIA),
                   KC_DOT, KC_DOT, KC_DOT, KC_LALT, KC_LCTL,
                   ALT_T(KC_APP), KC_LGUI,
                   KC_HOME,
                   KC_ENT, KC_LGUI, KC_END,
                   // right hand
-                  KC_RGHT, KC_6, KC_7, KC_8, KC_9, KC_0, MO(MDIA),
-                  TG(MDIA), KC_Y, KC_V, KC_D, KC_L, LT(SYMB, KC_J), KC_Z,
+                  KC_RGHT, KC_6, KC_7, KC_8, KC_9, KC_0, HYPR(KC_L),
+                  TG(SYMB), KC_Y, KC_V, KC_D, KC_L, LT(SYMB, KC_J), KC_K,
                   KC_C, KC_T, KC_S, KC_R, KC_N, MO(EDIT),
-                  TG(NUMB), KC_M, KC_Q, KC_G, KC_H, KC_RSFT, KC_DOT,
+                  MO(MDIA), KC_M, KC_Q, KC_G, KC_H, KC_RSFT, TG(NUMB),
                   KC_RCTL, KC_RALT, KC_DOT, KC_DOT, KC_DOT,
                   KC_LALT, CTL_T(KC_ESC),
                   KC_PGUP,
@@ -89,15 +89,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /*
    * ,--------------------------------------------------.           ,--------------------------------------------------.
-   * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
+   * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-   * |        |   !  |   @  |   {  |   }  |   |  |      |           |      |   Up |   7  |   8  |   9  |   *  |   F12  |
+   * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * |        |   #  |   $  |   (  |   )  |   `  |------|           |------| Down |   4  |   5  |   6  |   +  |        |
+   * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-   * |        |   %  |   ^  |   [  |   ]  |   ~  |      |           |      |   &  |   1  |   2  |   3  |   \  |        |
+   * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-   *   |      |      |      |      |      |                                       |      |    . |   0  |   =  |      |
+   *   |      |      |      |      |      |                                       |      |      |      |      |      |
    *   `----------------------------------'                                       `----------------------------------'
    *                                        ,-------------.       ,-------------.
    *                                        |      |      |       |      |      |
@@ -127,5 +127,129 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_TRNS,
                   KC_TRNS, KC_TRNS, KC_TRNS
                   ),
+
+  /*
+   * ,--------------------------------------------------.           ,--------------------------------------------------.
+   * |        |      |      |      |      |      |      |           |      |      |      |      |Power | Wake | Sleep  |
+   * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+   * |        |      |      |      |      |      |      |           |      |      |      | Mute |PausePlay|   |        |
+   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+   * |        |      |      |      |      |      |------|           |------|      | Prev | Vol+ | Vol- | Next |        |
+   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+   * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+   * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+   *   |      |      |      |      |      |                                       |      |      |      |      |      |
+   *   `----------------------------------'                                       `----------------------------------'
+   *                                        ,-------------.       ,-------------.
+   *                                        |      |      |       |      |      |
+   *                                 ,------|------|------|       |------+------+------.
+   *                                 |      |      |      |       |      |      |      |
+   *                                 |      |      |------|       |------|      |      |
+   *                                 |      |      |      |       |      |      |      |
+   *                                 `--------------------'       `--------------------'
+   */
+  [MDIA] = KEYMAP(
+                  // left hand
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS,
+                  KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS,
+                  // right hand
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_POWER, KC_WAKE, KC_SYSTEM_SLEEP,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_MUTE, KC_MPLY, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_MPRV, KC_VOLU, KC_VOLD, KC_MNXT, KC_TRNS,
+                  KC_TRNS, KC_AMPR, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS,
+                  KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS
+                  ),
+
+  /*
+   * ,--------------------------------------------------.           ,--------------------------------------------------.
+   * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+   * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+   * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+   * |        |  1   |  2   |  3   |  4   |   5  |------|           |------|  6   |  7   |  8   |  9   |  0   |        |
+   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+   * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+   * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+   *   |      |      |      |      |      |                                       |      |      |      |      |      |
+   *   `----------------------------------'                                       `----------------------------------'
+   *                                        ,-------------.       ,-------------.
+   *                                        |      |      |       |      |      |
+   *                                 ,------|------|------|       |------+------+------.
+   *                                 |      |      |      |       |      |      |      |
+   *                                 |      |      |------|       |------|      |      |
+   *                                 |      |      |      |       |      |      |      |
+   *                                 `--------------------'       `--------------------'
+   */
+  [NUMB] = KEYMAP(
+                  // left hand
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_1, KC_2, KC_3, KC_4, KC_5,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS,
+                  KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS,
+                  // right hand
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_6, KC_7, KC_8, KC_9, KC_0, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS,
+                  KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS
+                  ),
+
+  /*
+   * ,--------------------------------------------------.           ,--------------------------------------------------.
+   * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+   * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+   * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+   * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+   * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+   * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+   * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+   *   |      |      |      |      |      |                                       |      |      |      |      |      |
+   *   `----------------------------------'                                       `----------------------------------'
+   *                                        ,-------------.       ,-------------.
+   *                                        |      |      |       |      |      |
+   *                                 ,------|------|------|       |------+------+------.
+   *                                 |      |      |      |       |      |      |      |
+   *                                 |      |      |------|       |------|      |      |
+   *                                 |      |      |      |       |      |      |      |
+   *                                 `--------------------'       `--------------------'
+   * /
+  [EMPTY] = KEYMAP(
+                  // left hand
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS,
+                  KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS,
+                  // right hand
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                  KC_TRNS, KC_TRNS,
+                  KC_TRNS,
+                  KC_TRNS, KC_TRNS, KC_TRNS
+                  ),
+  */
 
 };
