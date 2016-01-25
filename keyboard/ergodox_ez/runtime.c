@@ -2,6 +2,7 @@
 #include "debug.h"
 #include "action_layer.h"
 #include "constants.h"
+#include "led.h"
 
 // Runs constantly in the background, in a loop.
 void * matrix_scan_user(void) {
@@ -28,11 +29,17 @@ void * matrix_scan_user(void) {
     break;
 
   case NUMB:
+    ergodox_right_led_1_on();
     ergodox_right_led_2_on();
     break;
 
   default:
     break;
+  }
+
+  if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
+    ergodox_right_led_1_on();
+    ergodox_right_led_3_on();
   }
 
 };
