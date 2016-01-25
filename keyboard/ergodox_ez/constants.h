@@ -16,7 +16,6 @@ enum {
   TOGGLE_SYMB_LAYER,
   DELETE_BEG_LINE,
   DELETE_END_LINE,
-  JORSYM,
 };
 
 #endif

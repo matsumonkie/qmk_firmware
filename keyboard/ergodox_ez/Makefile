@@ -31,7 +31,7 @@ SRC = ergodox_ez.c \
 	  matrix.c \
           init.c \
           runtime.c \
-          macro.c
+          macros.c
 
 ifdef KEYMAP
     SRC := keymaps/keymap_$(KEYMAP).c $(SRC)

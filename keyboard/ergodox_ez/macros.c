@@ -4,7 +4,8 @@
 #include "constants.h"
 
 const uint16_t PROGMEM fn_actions[] = {
-  [1] = ACTION_LAYER_TAP_TOGGLE(SYMB)                // FN1 - Momentary Layer 1 (Symbols)
+  [1] = ACTION_LAYER_TAP_KEY(SYMB, KC_B),
+  [2] = ACTION_LAYER_TAP_KEY(SYMB, KC_J),
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
@@ -34,7 +35,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
       return MACRO(D(LSFT), T(HOME), U(LSFT), T(BSPC), END);
     }
     break;
-
 
   }
 
