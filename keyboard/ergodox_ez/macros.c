@@ -24,18 +24,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
     }
     break;
 
-  case DELETE_END_LINE:
-    if (record->event.pressed) {
-      return MACRO(D(LSFT), T(END), U(LSFT), T(DEL), END);
-    }
-    break;
-
-  case DELETE_BEG_LINE:
-    if (record->event.pressed) {
-      return MACRO(D(LSFT), T(HOME), U(LSFT), T(BSPC), END);
-    }
-    break;
-
   }
 
   return MACRO_NONE;
