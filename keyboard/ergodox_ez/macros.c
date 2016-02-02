@@ -24,6 +24,17 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
     }
     break;
 
+  case LESS:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(COMMA), U(LSFT), END);
+    }
+    break;
+
+  case MORE:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(DOT), U(LSFT), END);
+    }
+    break;
   }
 
   return MACRO_NONE;

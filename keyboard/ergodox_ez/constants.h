@@ -14,6 +14,8 @@ enum {
   SWITCH_TAB,
   SWITCH_BUFFER,
   TOGGLE_SYMB_LAYER,
+  LESS,
+  MORE,
 };
 
 #endif
