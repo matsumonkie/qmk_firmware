@@ -1,3 +1,4 @@
+keyboard/planck/dfu-programmer.exe
 .dep
 *.o
 *.eep
@@ -14,3 +15,9 @@ build/
 *.bak
 .vagrant/
 keyboard/ergodox_ez/error
+.DS_STORE
+
+# Eclipse Settings
+.cproject
+.project
+.settings/
