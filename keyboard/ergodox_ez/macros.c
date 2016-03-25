@@ -4,8 +4,7 @@
 #include "constants.h"
 
 const uint16_t PROGMEM fn_actions[] = {
-  [1] = ACTION_LAYER_TAP_KEY(SYMB, KC_B),
-  [2] = ACTION_LAYER_TAP_KEY(SYMB, KC_J),
+  //[1] = ACTION_LAYER_TAP_KEY(SYMB, KC_B),
 };
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)

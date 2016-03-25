@@ -9,7 +9,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,--------------------------------------------------.           ,--------------------------------------------------.
    * |  Esc   |   1  |   2  |   3  |   4  |   5  | Del  |           | Bspc |   6  |   7  |   8  |   9  |   0  |  Lock  |
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-   * |  Tab   |SYMB/B|   K  |   P  |   O  |   ,  | EDIT |           | SYMB |   Y  |   V  |   D  |   L  |SYMB/J|        |
+   * |  B     | SYMB |   K  |   P  |   O  |   ,  | EDIT |           | SYMB |   Y  |   V  |   D  |   L  | SYMB |   J    |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
    * |  EDIT  |   A  |   U  |   I  |   E  |   .  |------|           |------|   C  |   T  |   S  |   R  |   N  |  EDIT  |
    * |--------+------+------+------+------+------| MDIA |           | MDIA |------+------+------+------+------+--------|
@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] =
   KEYMAP(
          KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_DEL,
-         KC_TAB, KC_FN1, KC_K, KC_P, KC_O, KC_COMM, TG(EDIT),
+         KC_B, MO(SYMB), KC_K, KC_P, KC_O, KC_COMM, TG(EDIT),
          MO(EDIT), KC_A, KC_U, KC_I, KC_E, KC_DOT,
          KC_CAPS, KC_LSFT, KC_X, KC_Z, KC_W, KC_F, MO(MDIA),
          KC_DOT, KC_DOT, KC_DOT, KC_LALT, KC_LCTL,
@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_ENT, KC_LGUI, KC_END,
 
          KC_BSPC, KC_6, KC_7, KC_8, KC_9, KC_0, HYPR(KC_L),
-         TG(SYMB), KC_Y, KC_V, KC_D, KC_L, KC_FN2, KC_TRNS,
+         TG(SYMB), KC_Y, KC_V, KC_D, KC_L, MO(SYMB), KC_J,
          KC_C, KC_T, KC_S, KC_R, KC_N, MO(EDIT),
          MO(MDIA), KC_M, KC_Q, KC_G, KC_H, KC_RSFT, TG(NUMB),
          KC_RCTL, KC_RALT, KC_DOT, KC_DOT, KC_DOT,
@@ -87,6 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_TRNS, KC_TRNS, KC_TRNS
          ),
 
+  /*
    * ,--------------------------------------------------.           ,--------------------------------------------------.
    * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
