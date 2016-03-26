@@ -23,6 +23,12 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
     }
     break;
 
+  case DQUOTE:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(QUOTE), U(LSFT), END);
+    }
+    break;
+
   case LESS:
     if (record->event.pressed) {
       return MACRO(D(LSFT), T(COMMA), U(LSFT), END);
