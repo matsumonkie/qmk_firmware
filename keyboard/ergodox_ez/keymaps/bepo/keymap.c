@@ -9,11 +9,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,--------------------------------------------------.           ,--------------------------------------------------.
    * |  Esc   |   1  |   2  |   3  |   4  |   5  | Del  |           | Bspc |   6  |   7  |   8  |   9  |   0  |  Lock  |
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-   * |  SYMB  |   B  |   K  |   P  |   O  |   ,  | EDIT |           | SYMB |   Y  |   V  |   D  |   L  |   J  | SYMB   |
+   * |  CAPS  |   B  |   K  |   P  |   O  |   ,  | EDIT |           | SYMB |   Y  |   V  |   D  |   L  |   J  |NumLock |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
    * |  EDIT  |   A  |   U  |   I  |   E  |   .  |------|           |------|   C  |   T  |   S  |   R  |   N  |  EDIT  |
    * |--------+------+------+------+------+------| MDIA |           | MDIA |------+------+------+------+------+--------|
-   * |  Caps  |Shift |   X  |   B  |   W  |   F  |      |           |      |   M  |   Q  |   G  |   H  |RShift|NumLock |
+   * |  SYMB  |Shift |   X  |   B  |   W  |   F  |      |           |      |   M  |   Q  |   G  |   H  |RShift|  SYMB  |
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
    *   |      |      |AltShf| LAlt | LCtl |                                       | RCtl | LAlt |      |      |      |
    *   `----------------------------------'                                       `----------------------------------'
@@ -28,18 +28,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] =
   KEYMAP(
          KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_DEL,
-         MO(SYMB), KC_B, KC_K, KC_P, KC_O, KC_COMM, TG(EDIT),
+         KC_CAPS, KC_B, KC_K, KC_P, KC_O, KC_COMM, TG(EDIT),
          MO(EDIT), KC_A, KC_U, KC_I, KC_E, KC_DOT,
-         KC_CAPS, KC_LSFT, KC_X, KC_Z, KC_W, KC_F, MO(MDIA),
+         MO(SYMB), KC_LSFT, KC_X, KC_Z, KC_W, KC_F, MO(MDIA),
          KC_DOT, KC_DOT, KC_DOT, KC_LALT, KC_LCTL,
          ALT_T(KC_APP), KC_LGUI,
          KC_HOME,
          KC_ENT, KC_LGUI, KC_END,
 
          KC_BSPC, KC_6, KC_7, KC_8, KC_9, KC_0, HYPR(KC_L),
-         TG(SYMB), KC_Y, KC_V, KC_D, KC_L, KC_J, MO(SYMB),
+         TG(SYMB), KC_Y, KC_V, KC_D, KC_L, KC_J, TG(NUMB),
          KC_C, KC_T, KC_S, KC_R, KC_N, MO(EDIT),
-         MO(MDIA), KC_M, KC_Q, KC_G, KC_H, KC_RSFT, TG(NUMB),
+         MO(MDIA), KC_M, KC_Q, KC_G, KC_H, KC_RSFT, MO(SYMB),
          KC_RCTL, KC_RALT, KC_DOT, KC_DOT, KC_DOT,
          KC_LALT, CTL_T(KC_ESC),
          KC_PGUP,
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                                        |      |      |       |      |      |
    *                                 ,------|------|------|       |------+------+------.
    *                                 |      |      |      |       |      |      |      |
-   *                                 |      |      |------|       |------|      |      |
+   *                                 |  '   |      |------|       |------|      |  "   |
    *                                 |      |      |      |       |      |      |      |
    *                                 `--------------------'       `--------------------'
    */
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
          KC_TRNS, KC_TRNS,
          KC_TRNS,
-         KC_TRNS, KC_TRNS, KC_TRNS,
+         KC_QUOTE, KC_TRNS, KC_TRNS,
 
          KC_TRNS, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11,
          KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_END, KC_NO, KC_TRNS,
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
          KC_TRNS, KC_TRNS,
          KC_TRNS,
-         KC_TRNS, KC_TRNS, KC_TRNS
+         KC_TRNS, KC_TRNS, M(DQUOTE)
          ),
 
   /*
