@@ -16,6 +16,8 @@ enum {
   TOGGLE_SYMB_LAYER,
   LESS,
   MORE,
+  PLUS,
+  QUESTION,
   DQUOTE, // "
 };
 

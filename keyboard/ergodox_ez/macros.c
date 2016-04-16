@@ -40,6 +40,18 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
       return MACRO(D(LSFT), T(DOT), U(LSFT), END);
     }
     break;
+
+  case QUESTION:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(SLASH), U(LSFT), END);
+    }
+    break;
+
+  case PLUS:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(EQL), U(LSFT), END);
+    }
+    break;
   }
 
   return MACRO_NONE;
