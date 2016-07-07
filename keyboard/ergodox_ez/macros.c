@@ -23,6 +23,18 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
     }
     break;
 
+  case SWITCH_PREVIOUS_TAB:
+    if (record->event.pressed) {
+      return MACRO(D(LCTL), D(LSFT), T(TAB), U(LSFT), U(LCTL), END);
+    }
+    break;
+
+  case SHIFT_TAB:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(TAB), U(LSFT), END);
+    }
+    break;
+
   case DQUOTE:
     if (record->event.pressed) {
       return MACRO(D(LSFT), T(QUOTE), U(LSFT), END);
