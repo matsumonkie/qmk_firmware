@@ -13,7 +13,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
   case SWITCH_APP:
     if (record->event.pressed) {
-      return MACRO(D(LALT), T(TAB), END);
+      return MACRO(D(LGUI), T(TAB), END);
     }
     break;
 
@@ -64,6 +64,19 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
       return MACRO(D(LSFT), T(EQL), U(LSFT), END);
     }
     break;
+
+  case BEG_LINE:
+    if (record->event.pressed) {
+      return MACRO(D(LGUI), T(LEFT), U(LGUI), END);
+    }
+    break;
+
+  case END_LINE:
+    if (record->event.pressed) {
+      return MACRO(D(LGUI), T(RIGHT), U(LGUI), END);
+    }
+    break;
+
   }
 
   return MACRO_NONE;

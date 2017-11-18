@@ -21,6 +21,8 @@ enum {
   PLUS,
   QUESTION,
   DQUOTE, // "
+  BEG_LINE,
+  END_LINE,
 };
 
 #endif
