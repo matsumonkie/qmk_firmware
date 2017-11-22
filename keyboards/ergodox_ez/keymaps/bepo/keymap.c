@@ -1,7 +1,34 @@
-#include "ergodox_ez.h"
+#include QMK_KEYBOARD_H
 #include "debug.h"
 #include "action_layer.h"
-#include "constants.h"
+
+// CONSTANTS
+
+enum {
+  BASE,
+  EDIT,
+  SYMB,
+  MDIA,
+  NUMB,
+};
+
+enum {
+  SWITCH_APP,
+  SWITCH_TAB,
+  SWITCH_PREVIOUS_TAB,
+  SWITCH_BUFFER,
+  SHIFT_TAB,
+  TOGGLE_SYMB_LAYER,
+  LESS,
+  MORE,
+  PLUS,
+  QUESTION,
+  DQUOTE, // "
+  BEG_LINE,
+  END_LINE,
+};
+
+// LAYOUTS
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -251,5 +278,129 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_TRNS, KC_TRNS, KC_TRNS
    ),
   */
+
+};
+
+// MACROS
+
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+  switch(id) {
+
+  case SWITCH_APP:
+    if (record->event.pressed) {
+      return MACRO(D(LGUI), T(TAB), END);
+    }
+    break;
+
+  case SWITCH_TAB:
+    if (record->event.pressed) {
+      return MACRO(D(LCTL), T(TAB), END);
+    }
+    break;
+
+  case SWITCH_PREVIOUS_TAB:
+    if (record->event.pressed) {
+      return MACRO(D(LCTL), D(LSFT), T(TAB), U(LSFT), U(LCTL), END);
+    }
+    break;
+
+  case SHIFT_TAB:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(TAB), U(LSFT), END);
+    }
+    break;
+
+  case DQUOTE:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(QUOTE), U(LSFT), END);
+    }
+    break;
+
+  case LESS:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(COMMA), U(LSFT), END);
+    }
+    break;
+
+  case MORE:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(DOT), U(LSFT), END);
+    }
+    break;
+
+  case QUESTION:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(SLASH), U(LSFT), END);
+    }
+    break;
+
+  case PLUS:
+    if (record->event.pressed) {
+      return MACRO(D(LSFT), T(EQL), U(LSFT), END);
+    }
+    break;
+
+  case BEG_LINE:
+    if (record->event.pressed) {
+      return MACRO(D(LGUI), T(LEFT), U(LGUI), END);
+    }
+    break;
+
+  case END_LINE:
+    if (record->event.pressed) {
+      return MACRO(D(LGUI), T(RIGHT), U(LGUI), END);
+    }
+    break;
+
+  }
+
+  return MACRO_NONE;
+};
+
+// run on start
+void matrix_init_user(void) {
+  for (int i = 0; i < 5; i++) {
+    ergodox_blink_all_leds();
+  }
+};
+
+// runs constantly in the background, in a loop.
+void matrix_scan_user(void) {
+
+  uint8_t layer = biton32(layer_state);
+
+  ergodox_board_led_off();
+  ergodox_right_led_1_off();
+  ergodox_right_led_2_off();
+  ergodox_right_led_3_off();
+
+  switch (layer) {
+
+  case EDIT:
+    ergodox_right_led_1_on();
+    break;
+
+  case SYMB:
+    ergodox_right_led_2_on();
+    break;
+
+  case MDIA:
+    ergodox_right_led_3_on();
+    break;
+
+  case NUMB:
+    ergodox_right_led_1_on();
+    ergodox_right_led_2_on();
+    break;
+
+  default:
+    break;
+  }
+
+  if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
+    ergodox_right_led_1_on();
+    ergodox_right_led_3_on();
+  }
 
 };
