@@ -14,6 +14,7 @@ enum {
 
 enum {
   SWITCH_APP,
+  SWITCH_INNER_APP,
   SWITCH_TAB,
   SWITCH_PREVIOUS_TAB,
   SWITCH_BUFFER,
@@ -98,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_TRNS,
          KC_TRNS, KC_NO, LSFT(KC_HOME), LSFT(KC_END), M(SWITCH_TAB), KC_TRNS, KC_TRNS,
          KC_TRNS, KC_TRNS, KC_DELT, KC_BSPC, M(SWITCH_APP), KC_TAB,
-         KC_TRNS, KC_TRNS, LCTL(KC_DEL), LCTL(KC_BSPC), HYPR(KC_B), KC_TRNS, KC_TRNS,
+         KC_TRNS, KC_TRNS, LCTL(KC_DEL), LCTL(KC_BSPC), M(SWITCH_INNER_APP), KC_TRNS, KC_TRNS,
          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LALT,
          KC_TRNS, KC_TRNS,
          KC_TRNS,
@@ -290,6 +291,12 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
   case SWITCH_APP:
     if (record->event.pressed) {
       return MACRO(D(LGUI), T(TAB), END);
+    }
+    break;
+
+  case SWITCH_INNER_APP:
+    if (record->event.pressed) {
+      return MACRO(D(LGUI), T(GRV), END);
     }
     break;
 
